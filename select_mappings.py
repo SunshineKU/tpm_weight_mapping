@@ -22,7 +22,7 @@ import csv
 
 import numpy as np
 
-from analysis_mappings_1 import (asymmetric_mapping, properties, symmetric_b,
+from analyze import (asymmetric_mapping, properties, symmetric_b,
                               symmetric_mappings)
 
 ROUND = 9   # decimals used to compare locality values
