@@ -1,6 +1,6 @@
 """Monte Carlo simulation of TPM synchronization for the selected mappings.
 
-Reads the mappings chosen by selecting_mappings.py and, for every mapping and
+Reads the mappings chosen by select_mappings.py and, for every mapping and
 QBER, runs --runs independent synchronizations (Section "Simulation Setup"):
 
   * Alice's key is uniformly random; Bob's key flips each bit with prob. p.
