@@ -12,11 +12,19 @@ This repository contains the three scripts that produce all results of the paper
 | `select_mappings.py` | III-E | Selects the representative subset of mappings to simulate |
 | `simulate.py` | III-F | Monte Carlo simulation of TPM synchronization, the simple and geometric attacks, and the communication leakage |
 
-| Result file | Produced by | Contents |
-|---|---|---|
-| `mapping_analysis.csv` | `analyze.py` | Exact properties of all mappings for every $L$ and QBER (42,636 rows) |
-| `selected_mappings.csv` | `select_mappings.py` | The 116 mappings simulated in the paper |
-| `simulation_summary.csv` | `simulate.py` | Simulation results for all 1276 configurations, 5000 runs each (7656 rows) |
+| Archive | Contains | Produced by | Contents |
+|---|---|---|---|
+| `mapping_analysis.zip` | `mapping_analysis.csv` | `analyze.py` | Exact properties of all mappings for every $L$ and QBER (42,636 rows) |
+| `selected_mappings.zip` | `selected_mappings.csv` | `select_mappings.py` | The 116 mappings simulated in the paper |
+| `simulation_summary.zip` | `simulation_summary.csv` | `simulate.py` | Simulation results for all 1276 configurations, 5000 runs each (7656 rows) |
+
+The result files are compressed. Extract them into the repository directory before use:
+
+```bash
+unzip mapping_analysis.zip
+unzip selected_mappings.zip
+unzip simulation_summary.zip
+```
 
 The column formats are described under [Output files](#output-files).
 
@@ -46,7 +54,7 @@ python select_mappings.py
 python simulate.py --out new_summary.csv
 ```
 
-Steps 1 and 2 overwrite the included files with identical results. In step 3, use a new `--out` file: `simulate.py` skips every configuration that is already in its output file, so with the default `--out simulation_summary.csv` it finds all configurations done and runs nothing.
+Steps 1 and 2 regenerate the files in `mapping_analysis.zip` and `selected_mappings.zip` with identical results (and overwrite them if already extracted). In step 3, use a new `--out` file: `simulate.py` skips every configuration that is already in its output file, so with the default `--out simulation_summary.csv` and the included results extracted, it finds all configurations done and runs nothing.
 
 Steps 1 and 2 take seconds. Step 3 runs 1276 configurations (116 mappings × 11 QBER values), each with 5000 runs, and is by far the most expensive step. Configurations are distributed over all CPU cores by default (`--workers`), and the longest ones (large $L$ and QBER) run first.
 
